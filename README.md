@@ -2,6 +2,7 @@
 
 Steps:
 
+0. `pod repo update`
 1. `cordova plugin add` this repo URL
 2. `cordova platform add ios`
 3. Edit `platforms/ios/Podfile` and set `platform :ios, '10.0'`
