@@ -3,10 +3,11 @@
 Steps:
 
 0. `pod repo update`
-1. `cordova plugin add` this repo URL
-2. `cordova platform add ios`
-3. Edit `platforms/ios/Podfile` and set `platform :ios, '10.0'`
-4. `cd platforms/ios` run `pod install`
+1. Remove old versions of this plugin
+2. `cordova plugin add https://github.com/mlynch/azure-activedirectory-library-for-cordova`
+3. `cordova platform add ios`
+4. Edit `platforms/ios/Podfile` and set `platform :ios, '10.0'`
+5. `cd platforms/ios` run `pod install`
 
 
 # Active Directory Authentication Library (ADAL) plugin for Apache Cordova apps
