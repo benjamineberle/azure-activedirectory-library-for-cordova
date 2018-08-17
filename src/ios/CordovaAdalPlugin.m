@@ -48,6 +48,7 @@
             NSURL *redirectUri = [NSURL URLWithString:[command.arguments objectAtIndex:4]];
             NSString *userId = ObjectOrNil([command.arguments objectAtIndex:5]);
             NSString *extraQueryParameters = ObjectOrNil([command.arguments objectAtIndex:6]);
+            NSString *claims = ObjectOrNil([command.arguments objectAtIndex:7]);
 
             ADAuthenticationContext *authContext = [CordovaAdalPlugin getOrCreateAuthContext:authority
                                                                            validateAuthority:validateAuthority];
@@ -65,7 +66,9 @@
                  clientId:clientId
                  redirectUri:redirectUri
                  promptBehavior:AD_PROMPT_ALWAYS
-                 userId:userId
+                 userIdentifier:[ADUserIdentifier identifierWithId:userId]
+                 extraQueryParameters:extraQueryParameters
+                 claims: claims
                  extraQueryParameters:extraQueryParameters
                  completionBlock:^(ADAuthenticationResult *result) {
 

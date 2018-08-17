@@ -73,17 +73,21 @@ AuthenticationContext.createAsync = function (authority, validateAuthority) {
  * @param   {String}  extraQueryParameters
  *                                Extra query parameters (optional)
  *                                Parameters should be escaped before passing to this method (e.g. using 'encodeURI()')
+ * @param   {String}  claims
+ *                                Claim parameters (optional)
+ *                                Parameters should be used under conditional access scenarios
+ *
  *
  * @returns {Promise} Promise either fulfilled with AuthenticationResult object or rejected with error
  */
-AuthenticationContext.prototype.acquireTokenAsync = function (resourceUrl, clientId, redirectUrl, userId, extraQueryParameters) {
+AuthenticationContext.prototype.acquireTokenAsync = function (resourceUrl, clientId, redirectUrl, userId, extraQueryParameters, claims) {
 
     checkArgs('sssSS', 'AuthenticationContext.acquireTokenAsync', arguments);
 
     var d = new Deferred();
 
     bridge.executeNativeMethod('acquireTokenAsync', [this.authority, this.validateAuthority, resourceUrl, clientId, redirectUrl,
-        userId, extraQueryParameters])
+        userId, extraQueryParameters, claims])
     .then(function(authResult){
         d.resolve(new AuthenticationResult(authResult));
     }, function(err) {
