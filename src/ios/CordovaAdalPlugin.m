@@ -69,7 +69,6 @@
                  userIdentifier:[ADUserIdentifier identifierWithId:userId]
                  extraQueryParameters:extraQueryParameters
                  claims: claims
-                 extraQueryParameters:extraQueryParameters
                  completionBlock:^(ADAuthenticationResult *result) {
 
                      NSMutableDictionary *msg = [CordovaAdalUtils ADAuthenticationResultToDictionary: result];
