@@ -9,6 +9,8 @@ Steps:
 4. Edit `platforms/ios/Podfile` and set `platform :ios, '10.0'`
 5. `cd platforms/ios` run `pod install`
 
+Note: if you open the Xcode project, open the `.xcworkspace` file, not `.xcodeproj`, as the latter will not have the linked cocoapods.
+
 
 # Active Directory Authentication Library (ADAL) plugin for Apache Cordova apps
 
