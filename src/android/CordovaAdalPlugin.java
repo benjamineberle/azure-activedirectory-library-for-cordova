@@ -88,6 +88,7 @@ public class CordovaAdalPlugin extends CordovaPlugin {
             final String redirectUrl = args.getString(4);
             final String userId = args.optString(5, null).equals("null") ? null : args.optString(5, null);
             final String extraQueryParams = args.optString(6, null).equals("null") ? null : args.optString(6, null);
+            final String claims = args.optString(7, null).equals("null") ? null : args.optString(7, null);
 
             cordova.getThreadPool().execute(new Runnable() {
                 @Override
@@ -99,7 +100,9 @@ public class CordovaAdalPlugin extends CordovaPlugin {
                             clientId,
                             redirectUrl,
                             userId,
-                            extraQueryParams);
+                            extraQueryParams,
+                            claims
+                        );
                 }
             });
 
@@ -179,7 +182,7 @@ public class CordovaAdalPlugin extends CordovaPlugin {
         return true;
     }
 
-    private void acquireTokenAsync(String authority, boolean validateAuthority, String resourceUrl, String clientId, String redirectUrl, String userId, String extraQueryParams) {
+    private void acquireTokenAsync(String authority, boolean validateAuthority, String resourceUrl, String clientId, String redirectUrl, String userId, String extraQueryParams, String claims) {
 
         final AuthenticationContext authContext;
         try{
@@ -209,6 +212,7 @@ public class CordovaAdalPlugin extends CordovaPlugin {
                 userId,
                 SHOW_PROMPT_ALWAYS,
                 extraQueryParams,
+                claims,
                 new DefaultAuthenticationCallback(callbackContext));
     }
 
